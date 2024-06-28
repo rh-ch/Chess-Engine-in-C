@@ -22,13 +22,13 @@ enum {
     A6 = 71, B6, C6, D6, E6, F6, G6, H6,
     A7 = 81, B7, C7, D7, E7, F7, G7, H7,
     A8 = 91, B8, C8, D8, E8, F8, G8, H8, NO_SQ
-};//visualise the board with these ints excluding the borders which are formed by the other int
+};//board positions with corresponding indices on 120 board
 
 enum { FALSE, TRUE };
 
 enum { WKCA=1, WQCA=2, BKCA=4, BQCA=8 }; /* stored in a single integer castleperm
 which is used to determine the castling permissions, for example in the integer
-1 0 0 1 first bit used for first enum const and so on */
+1 0 0 1 first bit used for first enum const(indicating white king can castle) and so on */
 
 typedef struct {
     int move;
@@ -36,7 +36,7 @@ typedef struct {
     int ep;
     int fifty;
     U64 poskey;
-} struct_undo;
+} struct_undo;//to maintain history
 
 typedef struct {
 
@@ -56,6 +56,7 @@ typedef struct {
     int minpc[3];//bishops and knights
     int castleperm;
     struct_undo history[MAX_GAME_MOVES];//stores every field in struct undo upto value max moves
+    int plist[13][10];//piece list: plist[wK][0] plist[wK][1]... specifies which piece and how many
 } struct_board ;
 
 //MACROS
