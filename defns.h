@@ -3,6 +3,24 @@
 
 typedef unsigned long long int U64;
 
+#include "stdlib.h"
+
+#define DEBUG
+
+#ifndef DEBUG
+#define ASSERT(n)
+#else
+#define ASSERT(n) \
+if (!(n)) { \
+    printf("%s – Failed "#n"\n", __func__); \
+    printf("On %s \n", __DATE__); \
+    printf("At %s \n", __TIME__); \
+    printf("In File %s\n", __FILE__); \
+    printf("At Line %d\n", __LINE__); \
+    exit(1); \
+}
+#endif
+
 #define NAME "CHOCO 0.1"
 #define BRD_SQ_NUM 120
 #define MAX_GAME_MOVES 2048
