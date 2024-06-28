@@ -18,8 +18,9 @@ void InitSQ120TO64(){
     for(rank = RANK_1; rank <= RANK_8; ++rank){
         for(file = FILE_A; file <= FILE_H; ++file){//stepping through each index in the array
                 sq =  FRTOSQ(file,rank);
-                SQ64TO120[sq64] = sq;
-                SQ120TOSQ64[sq] = sq64;
+                SQ64TO120[sq64] = sq;//placing indices of 120 board in all 64 elements of the array
+                SQ120TOSQ64[sq] = sq64;/*creating a 0-64 index in the actual board excluding
+                borders to represent the chess board*/
                 sq64++;
         }
     }

@@ -40,7 +40,7 @@ typedef struct {
 
 typedef struct {
 
-    int pieces[BRD_SQ_NUM];//120 integer array consistes of complete board with borders
+    int pieces[BRD_SQ_NUM];//120 integer array consists of complete board with borders
     U64 pawns[3];/*01000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000
     pawn placed at A1*/
     int KingSq[2];//placement of kings both white and black
