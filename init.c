@@ -19,8 +19,7 @@ void InitSQ120TO64(){
         for(file = FILE_A; file <= FILE_H; ++file){//stepping through each index in the array
                 sq =  FRTOSQ(file,rank);
                 SQ64TO120[sq64] = sq;/*placing indices of 120 board(FRTOSQ) in all 64 
-                elements of the array; this will allow us to directly access the board that the
-                pieces will move in*/
+                elements of the array*/
                 SQ120TOSQ64[sq] = sq64;/*creating a 0-64 index in the 120 board
                 in the actual board excluding borders to represent the chess board*/
                 sq64++;

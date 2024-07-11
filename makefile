@@ -1,3 +1,3 @@
 all:
-	gcc -c choco.c init.c
-	gcc choco.o init.o -o choco.exe
+	gcc -c choco.c init.c bitboards.c
+	gcc choco.o init.o bitboards.c -o choco.exe

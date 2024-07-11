@@ -79,6 +79,7 @@ typedef struct {
 
 //MACROS
 #define FRTOSQ(f,r) ( (21 + (f)) + ((r) * 10) )//returns equivalent square index from 120 int array
+#define SQ64(sq120) SQ120TOSQ64[sq120]
 //GLOBALS
 extern int SQ120TOSQ64[BRD_SQ_NUM];
 extern int SQ64TO120[64];
