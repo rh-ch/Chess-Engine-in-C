@@ -22,7 +22,7 @@ void InitSQ120TO64(){
                 elements of the array*/
                 SQ120TOSQ64[sq] = sq64;/*creating a 0-64 index in the 120 board
                 in the actual board excluding borders to represent the chess board*/
-                sq64++;
+                sq64++;//using this to place the values of 0-64 in the places of array using sq64 vals
         }
     }
 }

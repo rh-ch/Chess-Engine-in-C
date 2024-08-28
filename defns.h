@@ -5,7 +5,7 @@ typedef unsigned long long int U64;
 
 #include "stdlib.h"
 
-#define DEBUG
+#define DEBUG//defining assert in c
 
 #ifndef DEBUG
 #define ASSERT(n)
@@ -44,16 +44,16 @@ enum {
 
 enum { FALSE, TRUE };
 
-enum { WKCA=1, WQCA=2, BKCA=4, BQCA=8 }; /* stored in a single integer castleperm
+enum { WKCA=1, WQCA=2, BKCA=4, BQCA=8 }; /* stored in a single integer castlePerm
 which is used to determine the castling permissions, for example in the integer
 1 0 0 1 first bit used for first enum const(indicating white king can castle) and so on */
 
 typedef struct {
     int move;
-    int castleperm;
+    int castlePerm;
     int ep;
     int fifty;
-    U64 poskey;
+    U64 posKey;
 } struct_undo;//to maintain history
 
 typedef struct {
@@ -67,25 +67,32 @@ typedef struct {
     int fifty;//fifty moves rule
     int ply;//how many half moves
     int catply;//total game- how many half moves(history)
-    U64 poskey;//position
+    U64 posKey;//position
     int pcnum[13];//piece number, to know which piece
     int bigpc[3];//anything that isnt a pawn
     int majpc[3];//rooks and queens
     int minpc[3];//bishops and knights
-    int castleperm;
+    int castlePerm;
     struct_undo history[MAX_GAME_MOVES];//stores every field in struct undo upto value max moves
-    int plist[13][10];//piece list: plist[wK][0] plist[wK][1]... specifies which piece and how many
+    int plist[13][10];/*piece list: plist[wK][0] plist[wK][1]... much easier to specify the piece location
+    than going through each element in pieces[BRD_SQ_NUM]*/
 } struct_board ;
 
 //MACROS
 #define FRTOSQ(f,r) ( (21 + (f)) + ((r) * 10) )//returns equivalent square index from 120 int array
 #define SQ64(sq120) SQ120TOSQ64[sq120]
+#define POP(b) popBit(b)
+#define CNT(b) countBits(b)
 //GLOBALS
 extern int SQ120TOSQ64[BRD_SQ_NUM];
 extern int SQ64TO120[64];
 //FUNCTIONS
+//init
 extern void AllInit();
 extern void InitSQ120TO64();
-//INIT.C
+//bitboard
+extern void printbitboards(U64 bb);
+extern int popBit(U64 *bb);
+extern int countBits(U64 b);
 
 #endif
