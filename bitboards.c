@@ -33,7 +33,7 @@ void printbitboards(U64 bb){
     for(rank = RANK_8; rank >= RANK_1; --rank){
         for(file = FILE_A; file <= FILE_H; ++file){
             sq = FRTOSQ(file,rank);//get the 120 based index
-            sq64 = sq64(sq);//get the 64 based index
+            sq64 = SQ64(sq);//get the 64 based index
 
             if((shiftMe << sq64) & bb)//if non zero prints X
                 printf("X");
