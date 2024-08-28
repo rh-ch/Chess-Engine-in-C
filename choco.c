@@ -17,7 +17,5 @@ int main(){
         printf("%5d",SQ64TO120[i]);//printing 64 board sq array
     }*/
 
-    int PieceOne = rand();
-
     return 0;
 }
