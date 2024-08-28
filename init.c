@@ -1,7 +1,33 @@
 #include "defns.h"
+#include "stdlib.h"
+
+#define rand_6((U64)rand() + \
+               (U64)rand() << 15+\
+               (U64)rand() << 30+\
+               (U64)rand() << 45+\
+               (U64)rand() & 0xf ) << 60;
 
 int SQ120TOSQ64[BRD_SQ_NUM];
 int SQ64TO120[64];
+
+U64 SetMask[64];
+U64 ClearMask[64];
+
+U64 PieceKeys[13][120];
+U64 SideKey;
+U64 castleKeys[16];
+
+void initbitmask(){
+    int index = 0;
+    for(index = 0; index < 64; index++){
+        SetMask[index] = 0ULL;
+        ClearMask[index] = 0ULL;
+    }
+    for(index = 0; index < 64; index++){
+        SetMask[index] |= (1ULL << index);
+        ClearMask[index] = ~SetMask[index];
+    }
+}
 
 void InitSQ120TO64(){
     int i = 0;

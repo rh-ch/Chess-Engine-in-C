@@ -67,7 +67,7 @@ typedef struct {
     int fifty;//fifty moves rule
     int ply;//how many half moves
     int catply;//total game- how many half moves(history)
-    U64 posKey;//position
+    U64 posKey;//position, used to detect any repetitions with history struct
     int pcnum[13];//piece number, to know which piece
     int bigpc[3];//anything that isnt a pawn
     int majpc[3];//rooks and queens
@@ -83,6 +83,8 @@ typedef struct {
 #define SQ64(sq120) SQ120TOSQ64[sq120]
 #define POP(b) popBit(b)
 #define CNT(b) countBits(b)
+#define CLRBIT(bb,sq) ((bb) &= ClearMask[(sq)])
+#define SETBIT(bb,sq) ((bb) |= SetMask[(sq)])
 //GLOBALS
 extern int SQ120TOSQ64[BRD_SQ_NUM];
 extern int SQ64TO120[64];
