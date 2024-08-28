@@ -1,11 +1,7 @@
 #include "defns.h"
 #include "stdlib.h"
 
-#define rand_6((U64)rand() + \
-               (U64)rand() << 15+\
-               (U64)rand() << 30+\
-               (U64)rand() << 45+\
-               (U64)rand() & 0xf ) << 60;
+//#define rand_6((U64)rand() + \(U64)rand() << 15+\(U64)rand() << 30+\(U64)rand() << 45+\(U64)rand() & 0xf ) << 60;
 
 int SQ120TOSQ64[BRD_SQ_NUM];
 int SQ64TO120[64];
