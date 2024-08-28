@@ -14,6 +14,7 @@ U64 SideKey;
 U64 castleKeys[16];
 
 void initbitmask(){
+
     int index = 0;
     for(index = 0; index < 64; index++){
         SetMask[index] = 0ULL;
